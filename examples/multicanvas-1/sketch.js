@@ -45,7 +45,7 @@ function setup() {
 
   // fill the window and set perspective
   space.size(windowWidth, windowHeight);
-  space.style('background-color', '#666');
+  space.style('background-color', '#333');
   space.style('perspective', '500px');
   space.style('perspective-origin', '50%', '50%');
 
@@ -64,7 +64,7 @@ function setup() {
     // position and style each div
     d.position( gapx + x * canvasWidth, gapy + y * canvasHeight);
     d.size(canvasWidth, canvasHeight);
-    d.style('background-color', '#fff');
+    d.style('background-color', '#ff9');
 
     // create a graphics for each canvas
     var g = canvas[i] = createGraphics(canvasWidth, canvasHeight);
@@ -72,6 +72,8 @@ function setup() {
     g.show();
 
   }
+
+  clearNotes();
 
   // no context menu on right click (chrome browser hack)
   window.addEventListener("contextmenu", function(e) { e.preventDefault(); })
@@ -89,16 +91,16 @@ function draw() {
     var g = canvas[i];
 
     // draw something
-    g.stroke('#933');
-    g.strokeWeight(2);
+    g.stroke('#000');
+    g.strokeWeight(0.5);
 
     if(mouseIsPressed && mouseButton === LEFT) {
       g.line(d.pmouseX, d.pmouseY, d.mouseX, d.mouseY);
     }
 
     // add rotation
-    div[i].rotateY(radians(1));
-    div[i].rotateX(radians(1));
+    div[i].rotateY(radians(0.5));
+    div[i].rotateX(radians(0.5));
 
     // update cursor for each of the divs
     div[i].elt.style.cursor = mouseButton === LEFT ? ARROW : HAND;
@@ -133,8 +135,16 @@ function mouseDragged() {
 
 // press [any key] to clean your drawings
 function keyTyped() {
+  clearNotes();
+}
+
+// clear the notes, adding a fine outline
+function clearNotes() {
   for(var i = 0; i < n; i++) {
-    canvas[i].background(255);
+    var g = canvas[i];
+    g.clear();
+    g.noFill();
+    g.rect(0, 0, canvasWidth, canvasHeight);
   }
 }
 
