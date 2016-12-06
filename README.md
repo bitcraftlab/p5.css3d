@@ -6,7 +6,8 @@ See the example for how to use it.
 
 ## Examples
 * Create several canvases floating in space
-  * [Multi Canvas 1](https://bitcraftlab.github.io/p5.css3d/examples/multicanvas-1/)
+  * [Canvas Grid](https://bitcraftlab.github.io/p5.css3d/examples/canvas-grid/)
+  * [Canvas Cube](https://bitcraftlab.github.io/p5.css3d/examples/canvas-cube/)
 * Create 3D interfaces programmatically
   * _to be done ..._
 * Create (invisible) divs on top of your canvas, so you can attach mouse events to your 3D sketch
